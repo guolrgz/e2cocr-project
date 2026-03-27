@@ -1,7 +1,17 @@
 // SnapWord - Word List Page
 
+let currentSort = 'date';
+
 document.addEventListener('DOMContentLoaded', () => {
   loadWords();
+
+  document.getElementById('sort-controls').addEventListener('click', (e) => {
+    const btn = e.target.closest('.wl-sort-btn');
+    if (!btn) return;
+    currentSort = btn.dataset.sort;
+    document.querySelectorAll('.wl-sort-btn').forEach((b) => b.classList.toggle('active', b === btn));
+    loadWords();
+  });
 });
 
 // Listen for storage changes (live update)
@@ -16,9 +26,25 @@ async function loadWords() {
   renderWords(words);
 }
 
+function applySortOrder(arr) {
+  if (currentSort === 'alpha') {
+    return [...arr].sort((a, b) => a.word.localeCompare(b.word));
+  }
+  if (currentSort === 'random') {
+    const copy = [...arr];
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+  // default: date descending
+  return [...arr].sort((a, b) => b.createdAt - a.createdAt);
+}
+
 function sortWords(words) {
-  const pinned = words.filter((w) => w.pinned).sort((a, b) => b.createdAt - a.createdAt);
-  const unpinned = words.filter((w) => !w.pinned).sort((a, b) => b.createdAt - a.createdAt);
+  const pinned = applySortOrder(words.filter((w) => w.pinned));
+  const unpinned = applySortOrder(words.filter((w) => !w.pinned));
   return [...pinned, ...unpinned];
 }
 

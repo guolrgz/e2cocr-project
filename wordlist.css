@@ -19,9 +19,37 @@ body {
 
 .wl-header {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 12px;
   margin-bottom: 28px;
+}
+
+.wl-sort {
+  margin-left: auto;
+  display: flex;
+  gap: 4px;
+}
+
+.wl-sort-btn {
+  background: none;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 13px;
+  color: #888;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.wl-sort-btn:hover {
+  border-color: #bbb;
+  color: #444;
+}
+
+.wl-sort-btn.active {
+  background: #1a1a1a;
+  border-color: #1a1a1a;
+  color: #fff;
 }
 
 .wl-title {
