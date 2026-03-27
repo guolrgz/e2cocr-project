@@ -1,0 +1,56 @@
+{
+  "manifest_version": 3,
+  "name": "SnapWord",
+  "version": "1.0.0",
+  "description": "OCR English words from screen and get Chinese translations powered by Claude AI",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "offscreen",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "https://api.anthropic.com/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "commands": {
+    "trigger-ocr": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+O",
+        "mac": "Command+Shift+O"
+      },
+      "description": "Activate OCR selection mode"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["lib/*", "traineddata/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

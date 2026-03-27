@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SnapWord - Word List</title>
+  <link rel="stylesheet" href="wordlist.css">
+</head>
+<body>
+  <div class="wl-container">
+    <div class="wl-header">
+      <h1 class="wl-title">SnapWord</h1>
+      <span id="word-count" class="wl-count"></span>
+    </div>
+    <div id="empty-state" class="wl-empty" style="display:none;">
+      <p>No words saved yet.</p>
+      <p class="wl-empty-hint">Press <kbd>Ctrl+Shift+O</kbd> on any page to start capturing words.</p>
+    </div>
+    <div id="word-grid" class="wl-grid"></div>
+  </div>
+  <script src="wordlist.js"></script>
+</body>
+</html>

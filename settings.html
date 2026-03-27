@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SnapWord Settings</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <div class="settings-container">
+    <h1 class="settings-title">SnapWord Settings</h1>
+
+    <div class="settings-section">
+      <label class="settings-label" for="api-key">Anthropic API Key</label>
+      <p class="settings-desc">Enter your Claude API key to enable translations and example sentences.</p>
+      <input type="password" id="api-key" class="settings-input" placeholder="sk-ant-api03-...">
+      <div class="settings-actions">
+        <button id="btn-save" class="settings-btn">Save</button>
+        <span id="status-msg" class="settings-status"></span>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h2 class="settings-subtitle">Keyboard Shortcut</h2>
+      <p class="settings-desc">
+        Default: <kbd>Ctrl+Shift+O</kbd> (Mac: <kbd>Cmd+Shift+O</kbd>)<br>
+        You can also right-click on any page and select "SnapWord: OCR this area".
+      </p>
+    </div>
+  </div>
+  <script src="settings.js"></script>
+</body>
+</html>
